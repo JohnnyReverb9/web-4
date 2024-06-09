@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ControllerGroup;
+use App\Http\Controllers\ControllerMainPage;
+use App\Http\Controllers\ControllerPost;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,26 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 // GET requests
 
-Route::get('/', function () {
-//    return view('welcome');
-    return 123;
-});
-
-Route::get("/main", function () {
-    return "welcome";
-});
-
-Route::get('products', [ProductController::class, 'index']);
-Route::get('products/{id}', [ProductController::class, 'show']);
+Route::get("/", [ControllerMainPage::class, "index"]);
+Route::get("/group", [ControllerGroup::class, "index"]);
+Route::get("/posts", [ControllerPost::class, "index"]);
 
 // POST requests
 
-Route::post('products', [ProductController::class, 'store']);
+// ...
 
 // PUT requests
 
-Route::put('products/{id}', [ProductController::class, 'update']);
+// ...
 
 // DELETE requests
 
-Route::delete('products/{id}', [ProductController::class, 'delete']);
+// ...
