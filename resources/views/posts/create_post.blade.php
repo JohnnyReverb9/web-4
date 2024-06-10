@@ -10,11 +10,11 @@
             @csrf
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" [maxLength]="70" required>
+                <input type="text" id="title" name="title" maxLength="45" placeholder="Give a brief title for your post" required>
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea id="content" name="content" rows="5"></textarea>
+                <textarea id="content" name="content" rows="5" placeholder="Tell the story..."></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Image</label>

@@ -18,11 +18,15 @@
         </nav>
     </div>
 </header>
-<div class="container">
-    @yield('content')
-</div>
+<main>
+    <div class="container">
+        @yield('content')
+    </div>
+</main>
 <footer>
     <p>&copy; 2024 Social Network</p>
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{{ asset("js/footer.js") }}"></script>
 </body>
 </html>
