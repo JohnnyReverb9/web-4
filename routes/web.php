@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerArchive;
 use App\Http\Controllers\ControllerGroup;
 use App\Http\Controllers\ControllerMainPage;
 use App\Http\Controllers\ControllerPost;
@@ -19,9 +20,12 @@ use Illuminate\Support\Facades\Route;
 // GET requests
 
 Route::get("/", [ControllerMainPage::class, "index"]);
+
 Route::get("/group", [ControllerGroup::class, "index"]);
 Route::get("/posts", [ControllerPost::class, "index"]);
 Route::get("posts/create", [ControllerPost::class, "formCreatePost"]);
+
+Route::get("/archive", [ControllerArchive::class, "index"]);
 
 // POST requests
 

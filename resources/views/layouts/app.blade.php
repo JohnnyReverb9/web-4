@@ -14,6 +14,7 @@
         <nav>
             <a href="/">Main</a>
             <a href="/posts">Posts</a>
+            <a href="/archive">Archive</a>
         </nav>
     </div>
 </header>
