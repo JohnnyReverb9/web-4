@@ -17,11 +17,11 @@
         </nav>
     </div>
 </header>
-<div>
-    <h1>Welcome!</h1>
+<div class="container">
+    @yield('content')
 </div>
-<div>
-
-</div>
+<footer>
+    <p>&copy; 2024 Social Network</p>
+</footer>
 </body>
 </html>
