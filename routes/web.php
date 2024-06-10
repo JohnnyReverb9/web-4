@@ -25,7 +25,7 @@ Route::get("posts/create", [ControllerPost::class, "formCreatePost"]);
 
 // POST requests
 
-// ...
+Route::post("posts/create", [ControllerPost::class, "createPost"]);
 
 // PUT requests
 

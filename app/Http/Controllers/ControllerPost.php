@@ -28,27 +28,27 @@ class ControllerPost extends Controller
         return view("posts/create_post");
     }
 
-    public function createPost()
+    public function createPost(Request $request)
     {
-        $posts_array = [
-            [
-                "title" => "i wanna dog",
-                "content" => "such a good dog i saw today",
-                "image" => "",
-                "likes" => "2",
-                "is_published" => "1"
-            ],
-            [
-                "title" => "such a lonely day",
-                "content" => "come as you are",
-                "image" => "",
-                "likes" => "23",
-                "is_published" => "1"
-            ]
-        ];
+        $validated_data = $request->validate([
+            "title" => "required|string|max:255",
+            "content" => "nullable|string",
+            "image" => "nullable|image|max:2048"
+        ]);
+
+        $image_path = null;
+
+        if ($request->hasFile("image"))
+        {
+            $image_path = $request->file("image")->store("images", "public");
+        }
 
         Post::create([
-
+            "title" => $validated_data["title"],
+            "content" => $validated_data["content"],
+            "image" => $image_path
         ]);
+
+        return redirect("/posts")->with("success", "Post created successfully");
     }
 }
