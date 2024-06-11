@@ -23,7 +23,8 @@ Route::get("/", [ControllerMainPage::class, "index"]);
 
 Route::get("/group", [ControllerGroup::class, "index"]);
 Route::get("/posts", [ControllerPost::class, "index"]);
-Route::get("posts/create", [ControllerPost::class, "formCreatePost"]);
+Route::get("/posts/create", [ControllerPost::class, "formCreatePost"]);
+Route::get("/posts/edit/{id}", [ControllerPost::class, "editPost"]);
 
 Route::get("/archive", [ControllerArchive::class, "index"]);
 
@@ -37,4 +38,4 @@ Route::post("posts/create", [ControllerPost::class, "createPost"]);
 
 // DELETE requests
 
-// ...
+Route::get("/posts/delete/{id}", [ControllerPost::class, "deletePost"]);
