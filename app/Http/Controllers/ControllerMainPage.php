@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Main;
 use Illuminate\Http\Request;
 
 class ControllerMainPage extends Controller
 {
     public function index()
     {
-        return view("main/index");
+        $all_posts = Main::all()->count();
+        $published_posts = Main::where("is_published", 1)->get()->count();
+        $archived_posts = Main::where("is_published", 0)->get()->count();
+
+        return view("main/index", compact("all_posts", "published_posts", "archived_posts"));
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("image")->nullable();
             $table->unsignedInteger("likes")->default(0);
             $table->boolean("is_published")->default(1);
+            $table->unsignedInteger("id_user");
             $table->timestamps();
         });
     }

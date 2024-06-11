@@ -13,12 +13,12 @@
                     <h2>{{ $post->title }}</h2>
                     <p id="text_container">{{ $post->content }}</p>
                     @if(!is_null($post->image))
-                    <img src="{{ asset("storage/" . $post->image) }}" width="auto" height="150" alt="{{ $post->title }}">
+                        <img src="{{ asset("storage/" . $post->image) }}" width="auto" height="150" alt="{{ $post->title }}">
                     @endif
                 </div>
             @endforeach
         @else
-            <p>No posts found.</p>
+            <h1>No posts found.</h1>
         @endif
     </div>
 </div>
