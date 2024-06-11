@@ -33,7 +33,8 @@ class ControllerPost extends Controller
         $validated_data = $request->validate([
             "title" => "required|string|max:255",
             "content" => "nullable|string",
-            "image" => "nullable|image|max:2048"
+            "image" => "nullable|image|max:2048",
+            "is_published" => "string"
         ]);
 
         $image_path = null;
@@ -43,12 +44,16 @@ class ControllerPost extends Controller
             $image_path = $request->file("image")->store("images", "public");
         }
 
+        $is_published = (int)!$request->has("is_published");
+
         Post::create([
             "title" => $validated_data["title"],
             "content" => $validated_data["content"],
-            "image" => $image_path
+            "image" => $image_path,
+            "is_published" => $is_published
         ]);
 
-        return redirect("/posts")->with("success", "Post created successfully");
+        if ($is_published) return redirect("/posts")->with("success", "Post created successfully");
+        else return redirect("/archive")->with("success", "Archive post created successfully");
     }
 }
