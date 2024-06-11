@@ -25,6 +25,7 @@ Route::get("/group", [ControllerGroup::class, "index"]);
 Route::get("/posts", [ControllerPost::class, "index"]);
 Route::get("/posts/create", [ControllerPost::class, "formCreatePost"]);
 Route::get("/posts/edit/{id}", [ControllerPost::class, "editPost"]);
+Route::get("/posts/view/{id}", [ControllerPost::class, "viewPost"]);
 
 Route::get("/archive", [ControllerArchive::class, "index"]);
 

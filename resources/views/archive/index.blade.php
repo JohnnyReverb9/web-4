@@ -9,7 +9,7 @@
     <div class="posts-grid">
         @if($archived_posts->count())
             @foreach($archived_posts as $post)
-                <div class="post" style="position: relative;">
+                <div class="post" style="position: relative; cursor: pointer;"  onclick="window.location='{{ url('/posts/view', $post->id) }}';">
                     <h2>{{ $post->title }}</h2>
                     <a href="{{ url('/posts/edit/' . $post->id) }}" class="edit-button" style="position: absolute; right: 10px; top: 36px;">
                         <img src="{{ asset("assets/pencil.svg") }}" width="17" height="17">

@@ -66,4 +66,9 @@ class ControllerPost extends Controller
     {
 
     }
+
+    public function viewPost()
+    {
+
+    }
 }

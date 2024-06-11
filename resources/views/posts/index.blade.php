@@ -9,7 +9,7 @@
         <div class="posts-grid">
             @if($posts->count())
                 @foreach($posts as $post)
-                    <div class="post" style="position: relative;">
+                    <div class="post" style="position: relative; cursor: pointer;" onclick="window.location='{{ url('/posts/view', $post->id) }}';">
                         <div style="display: flex; align-items: center;">
                             <h2>{{ $post->title }}</h2>
                             <a href="{{ url('/posts/edit/' . $post->id) }}" class="edit-button" style="position: absolute; right: 10px; top: 36px;">
