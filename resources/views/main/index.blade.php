@@ -3,7 +3,7 @@
 @section("content")
 
 <div>
-    <h1>Welcome!</h1>
+    <h1 style="font-size: 34px">Welcome!</h1>
 </div>
 <div class="stats-container">
     <div class="stats-item">
@@ -15,7 +15,7 @@
         <span>{{ $published_posts }}</span>
     </div>
     <div class="stats-item">
-        <span>Archived:</span>
+        <span>Permanents:</span>
         <span>{{ $archived_posts }}</span>
     </div>
 </div>

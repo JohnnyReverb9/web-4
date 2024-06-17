@@ -67,8 +67,12 @@ class ControllerPost extends Controller
 
     }
 
-    public function viewPost()
+    public function viewPost(Request $request)
     {
+        $post_info = Post::where("id", $request->id)->first();
 
+        // dd($post_info);
+
+        return view("/posts/post_view", compact("post_info"));
     }
 }

@@ -10,8 +10,8 @@
 <body>
 <header>
     <div>
-        <h1>Asocial Network</h1>
-        <nav>
+        <h1 style="font-size: 36px">Asocial Network</h1>
+        <nav style="font-size: 22px">
             <a href="/">Main</a>
             <a href="/posts">Posts</a>
             <a href="/permanent">Permanents</a>

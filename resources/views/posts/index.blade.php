@@ -1,7 +1,6 @@
 @extends("layouts.app")
 
 @section("content")
-
     <div class="container">
         <div class="header-actions">
             <a href="{{ url('/posts/create') }}" class="create-post-button">Create post</a>
@@ -11,17 +10,17 @@
                 @foreach($posts as $post)
                     <div class="post" style="position: relative; cursor: pointer;" onclick="window.location='{{ url('/posts/view', $post->id) }}';">
                         <div style="display: flex; align-items: center;">
-                            <h2>{{ $post->title }}</h2>
+                            <h2 style="font-size: 28px">{{ $post->title }}</h2>
                             <a href="{{ url('/posts/edit/' . $post->id) }}" class="edit-button" style="position: absolute; right: 10px; top: 36px;">
-                                <img src="{{ asset("assets/pencil.svg") }}" width="17" height="17">
+                                <img src="{{ asset("assets/pencil.svg") }}" width="19" height="19" alt="edit">
                             </a>
                             <a href="{{ url('/posts/delete/' . $post->id) }}" class="delete-button" style="position: absolute; right: 35px; top: 36px;">
-                                <img src="{{ asset("assets/trash.svg") }}" width="19" height="19">
+                                <img src="{{ asset("assets/trash.svg") }}" width="21" height="21" alt="delete">
                             </a>
                         </div>
-                        <p id="text_container">{{ $post->content }}</p>
+                        <p style="font-size: 20px">{{ $post->content }}</p>
                         @if(!is_null($post->image))
-                            <img src="{{ asset("storage/" . $post->image) }}" width="auto" height="150" alt="{{ $post->title }}">
+                            <img style="border-radius: 8px; justify-content: center; display: flex" src="{{ asset("storage/" . $post->image) }}" width="auto" height="150" alt="{{ $post->title }}">
                         @endif
                     </div>
                 @endforeach
