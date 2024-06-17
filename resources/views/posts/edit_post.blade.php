@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Content:</label>
-                <textarea id="content" name="content" rows="1" placeholder="Tell the story..." oninput="autoResize(this)">{{ $post->content }}</textarea>
+                <textarea id="content" name="content" placeholder="Tell the story..." oninput="autoResize(this)">{{ $post->content }}</textarea>
             </div>
             <div class="form-group">
                 <label for="image">Current Image:</label><br>
