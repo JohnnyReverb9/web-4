@@ -35,5 +35,6 @@
             <button type="submit" class="submit-button">Update post</button>
         </form>
     </div>
+    <script src="{{ asset("js/autoresize_textarea.js") }}"></script>
     <script src="{{ asset("js/textarea_resize.js") }}"></script>
 @endsection
