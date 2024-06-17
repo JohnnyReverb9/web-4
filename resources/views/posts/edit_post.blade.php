@@ -5,7 +5,7 @@
         <a href="{{ url("/posts") }}" class="create-post-button">Back</a>
     </div>
     <div class="form-container">
-        <h1>Create Post</h1>
+        <h1>Update Post</h1>
         <form action="{{ url('/posts/update/' . $post->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
