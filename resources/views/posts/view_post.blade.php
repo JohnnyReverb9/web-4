@@ -24,10 +24,12 @@
                 @endif
             </div>
             <div class="post-content">
-                {!! nl2br(e($post_info->content)) !!}
-                @if(!is_null($post_info->image))
-                    <img src="{{ asset("storage/" . $post_info->image) }}" alt="{{ $post_info->title }}" width="500" height="auto" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-                @endif
+                <p>
+                    @if(!is_null($post_info->image))
+                        <img src="{{ asset("storage/" . $post_info->image) }}" alt="{{ $post_info->title }}" width="500" height="auto" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); float: right;">
+                    @endif
+                    {!! nl2br(e($post_info->content)) !!}
+                </p>
             </div>
         </div>
     </div>
