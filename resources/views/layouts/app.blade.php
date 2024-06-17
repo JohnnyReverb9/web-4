@@ -14,7 +14,7 @@
         <nav>
             <a href="/">Main</a>
             <a href="/posts">Posts</a>
-            <a href="/archive">Archive</a>
+            <a href="/permanent">Permanents</a>
         </nav>
     </div>
 </header>

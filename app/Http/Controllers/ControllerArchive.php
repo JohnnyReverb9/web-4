@@ -11,6 +11,6 @@ class ControllerArchive extends Controller
     {
         $archived_posts = Post::where("is_published", 0)->get();
 
-        return view("archive/index", compact("archived_posts"));
+        return view("permanent/index", compact("archived_posts"));
     }
 }

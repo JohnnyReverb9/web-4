@@ -54,7 +54,7 @@ class ControllerPost extends Controller
         ]);
 
         if ($is_published) return redirect("/posts")->with("success", "Post created successfully");
-        else return redirect("/archive")->with("success", "Archive post created successfully");
+        else return redirect("/permanent")->with("success", "Archive post created successfully");
     }
 
     public function editPost()
