@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Content:</label>
-                <textarea id="content" name="content" rows="5" placeholder="Tell the story..." oninput="autoResize(this)"></textarea>
+                <textarea id="content" name="content" rows="1" placeholder="Tell the story..." oninput="autoResize(this)"></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
@@ -27,10 +27,5 @@
             <button type="submit" class="submit-button">Create post</button>
         </form>
     </div>
-    <script>
-        function autoResize(textarea) {
-            textarea.style.height = 'auto';
-            textarea.style.height = textarea.scrollHeight + 'px';
-        }
-    </script>
+    <script src="{{ asset("js/textarea_resize.js") }}"></script>
 @endsection

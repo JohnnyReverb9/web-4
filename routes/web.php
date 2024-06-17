@@ -31,7 +31,8 @@ Route::get("/permanent", [ControllerArchive::class, "index"]);
 
 // POST requests
 
-Route::post("posts/create", [ControllerPost::class, "createPost"]);
+Route::post("/posts/create", [ControllerPost::class, "createPost"]);
+Route::post("/posts/update/{id}", [ControllerPost::class, "updatePost"]);
 
 // PUT requests
 
