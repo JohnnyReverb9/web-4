@@ -25,7 +25,7 @@
                     <span>No image uploaded</span>
                     <br><br>
                 @endif
-                <label for="new_image">New Image:</label>
+                <label for="new_image">New Image (.jpg only):</label>
                 <input type="file" id="image" name="image" style="font-size: 18px;">
             </div>
             <div class="form-group">
