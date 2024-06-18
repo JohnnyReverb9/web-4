@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="header-actions">
-        <a href="{{ url("/posts") }}" class="create-post-button">Back</a>
+        <a onclick="goBack()" class="create-post-button" style="cursor: pointer;">Back</a>
     </div>
     <div class="form-container">
         <h1>Create Post</h1>
@@ -27,5 +27,6 @@
             <button type="submit" class="submit-button">Create post</button>
         </form>
     </div>
+    <script src="{{ asset("js/go_back.js") }}"></script>
     <script src="{{ asset("js/textarea_resize.js") }}"></script>
 @endsection
