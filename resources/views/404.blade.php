@@ -9,5 +9,4 @@
             <h1 style="font-size: 34px">404 | Page not found.</h1>
         </div>
     </div>
-    <script src="{{ asset("js/go_back.js") }}"></script>
 @endsection

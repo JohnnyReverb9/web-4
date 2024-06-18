@@ -27,6 +27,4 @@
             <button type="submit" class="submit-button">Create post</button>
         </form>
     </div>
-    <script src="{{ asset("js/go_back.js") }}"></script>
-    <script src="{{ asset("js/textarea_resize.js") }}"></script>
 @endsection

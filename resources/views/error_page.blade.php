@@ -14,6 +14,5 @@
             <h1 style="font-size: 34px">{{ $info }}</h1>
         </div>
     </div>
-    <script src="{{ asset("js/go_back.js") }}"></script>
 
 @endsection
