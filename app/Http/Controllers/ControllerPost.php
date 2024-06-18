@@ -61,7 +61,19 @@ class ControllerPost extends Controller
     {
         $post = Post::find($request->id);
 
-        return view("/posts/edit_post", compact("post"));
+        if ($post->is_published)
+        {
+            return view("/posts/edit_post", compact("post"));
+        }
+        else
+        {
+            $info = "Permanent post can not be edited.";
+            $refer = [
+                "title_btn" => "back",
+                "route" => ""
+            ];
+           return view("/error_page", compact("info", "refer"));
+        }
     }
 
     public function updatePost(Request $request)
@@ -73,7 +85,6 @@ class ControllerPost extends Controller
             "is_published" => "string"
         ]);
 
-        // $image_path = $validated_data["image"];
         $delete_image = (int)$request->has("delete_image");
 
         if ($request->hasFile("image"))
@@ -111,22 +122,46 @@ class ControllerPost extends Controller
 
     public function deletePost(Request $request)
     {
-        $post = Post::where("id", $request->id)->where("is_published", 1)->first();
+        $post = Post::find($request->id);
 
-        if ($post->is_published)
+        if (is_null($post))
+        {
+            $info = "Post not found.";
+            $refer = [
+                "title_btn" => "Back",
+                "route" => ""
+            ];
+            return view("/error_page", compact("info", "refer"));
+        }
+        elseif ($post->is_published)
         {
             $post->delete();
             return redirect("/posts")->with("success", "Post deleted successfully");
         }
         else
         {
-            return redirect("/permanent")->with("failed", "Permanent post can not be deleted");
+            $info = "Permanent post can not be deleted.";
+            $refer = [
+                "title_btn" => "Back",
+                "route" => ""
+            ];
+            return view("/error_page", compact("info", "refer"));
         }
     }
 
     public function viewPost(Request $request)
     {
         $post_info = Post::find($request->id);
+
+        if (is_null($post_info))
+        {
+            $info = "Post not found.";
+            $refer = [
+                "title_btn" => "Back",
+                "route" => ""
+            ];
+            return view("/error_page", compact("info", "refer"));
+        }
 
         return view("/posts/view_post", compact("post_info"));
     }

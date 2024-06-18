@@ -41,3 +41,9 @@ Route::post("/posts/update/{id}", [ControllerPost::class, "updatePost"]);
 // DELETE requests
 
 Route::get("/posts/delete/{id}", [ControllerPost::class, "deletePost"]);
+
+// 404 | Page not found.
+
+Route::fallback(function () {
+    return view("/404");
+});
