@@ -18,6 +18,12 @@
                 <a href="/settings/download_permanents" class="create-post-button" style="text-align: center">Permanents</a>
                 <a href="/settings/download_topics" class="create-post-button" style="text-align: center">Topics</a>
             </div>
+            <div class="post-header" style="margin-top: 30px">
+                <h1 style="font-size: 32px;">Contacts</h1>
+            </div>
+            <div class="post-content" style="margin-top: -30px">
+                <p>Teleram: <a href="https://t.me/Johnny_Reverb" id="profile-link">&#64;Johnny_Reverb</a></p>
+            </div>
         </div>
     </div>
 
