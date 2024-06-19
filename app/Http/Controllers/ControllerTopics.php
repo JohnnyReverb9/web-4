@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Topics;
 use Illuminate\Http\Request;
 
 class ControllerTopics extends Controller
 {
     public function index()
     {
-        return view("/topics/topics");
+        $topics = Topics::all();
+
+        return view("/topics/topics", compact("topics"));
+    }
+
+    public function viewTopic(Request $request)
+    {
+        return view("/topics/view_topic");
+    }
+
+    public function openTopic(Request $request)
+    {
+
     }
 }

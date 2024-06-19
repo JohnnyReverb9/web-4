@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger("post_id");
+            $table->string("topic_title");
             $table->unsignedInteger("comments")->default(0);
             $table->timestamps();
         });

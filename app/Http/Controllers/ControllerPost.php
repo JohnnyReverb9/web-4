@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Topics;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\If_;
 
 class ControllerPost extends Controller
 {
@@ -46,12 +48,20 @@ class ControllerPost extends Controller
 
         $is_published = (int)!$request->has("is_published");
 
-        Post::create([
+        $post = Post::create([
             "title" => $validated_data["title"],
             "content" => $validated_data["content"],
             "image" => $image_path,
             "is_published" => $is_published
         ]);
+
+        if (!$is_published)
+        {
+            Topics::create([
+                "post_id" => $post->id,
+                "topic_title" => $validated_data["title"]
+            ]);
+        }
 
         if ($is_published) return redirect("/posts")->with("success", "Post created successfully");
         else return redirect("/permanent")->with("success", "Permanent post created successfully");

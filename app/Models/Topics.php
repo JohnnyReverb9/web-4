@@ -10,4 +10,5 @@ class Topics extends Model
     use HasFactory;
 
     protected $table = "topics";
+    protected $fillable = ["post_id", "topic_title"];
 }

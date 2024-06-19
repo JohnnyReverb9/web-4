@@ -9,7 +9,7 @@
         </div>
         <div class="post-view">
             <div class="post-header">
-                <h1 style="font-size: 32px; margin-bottom: 20px">Download:</h1>
+                <h1 style="font-size: 32px; margin-bottom: 20px">Download</h1>
             </div>
             <div class="posts-grid" style="grid-template-columns: repeat(5, 1fr);">
                 <a href="/settings/download_all" class="create-post-button" style="text-align: center">All</a>

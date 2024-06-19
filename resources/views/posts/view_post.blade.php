@@ -8,8 +8,9 @@
                 <a href="{{ url('/posts') }}" class="create-post-button">Back</a>
             </div>
         @else
-            <div class="header-actions">
+            <div class="header-actions" style="display: flex; justify-content: flex-end;">
                 <h1></h1>
+                <a href="{{ url("/topics/open/" . $post_info->id) }}" class="create-post-button" style="margin-right: 10px;">Discuss in Topics</a>
                 <a href="{{ url('/permanent') }}" class="create-post-button">Back</a>
             </div>
         @endif

@@ -33,6 +33,8 @@ Route::get("/posts/view/{id}", [ControllerPost::class, "viewPost"]);
 Route::get("/permanent", [ControllerArchive::class, "index"]);
 
 Route::get("/topics", [ControllerTopics::class, "index"]);
+Route::get("/topics/view/{id}", [ControllerTopics::class, "viewTopic"]);
+Route::get("/topics/open/{id}", [ControllerTopics::class, "openTopic"]);
 
 Route::get("/settings", [ControllerSettings::class, "index"]);
 Route::get("/settings/download_all", [ControllerSettings::class, "downloadAll"]);
