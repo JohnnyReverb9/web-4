@@ -2,6 +2,7 @@
 
 @section("content")
     <div class="header-actions">
+        <h1></h1>
         <a onclick="goBack()" class="create-post-button" style="cursor: pointer;">Back</a>
     </div>
     <div class="form-container">

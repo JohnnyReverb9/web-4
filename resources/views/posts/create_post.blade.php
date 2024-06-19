@@ -2,10 +2,11 @@
 
 @section("content")
     <div class="header-actions">
+        <h1></h1>
         <a onclick="goBack()" class="create-post-button" style="cursor: pointer;">Back</a>
     </div>
     <div class="form-container">
-        <h1>Create Post</h1>
+        <h1>Create Post or Permanent</h1>
         <form action="{{ url('/posts/create') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
