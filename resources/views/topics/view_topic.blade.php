@@ -11,17 +11,19 @@
         </div>
 
         <div class="comments-section">
-            <div id="comments">
+            <div id="comments" style="display: flex; flex-direction: column; gap: 10px; font-size: 20px">
                 @foreach($comments as $comment)
-                    <div class="comment">{{ $comment->content }}</div>
+                    <div class="comment" style="width: 25%; background: #f9f9f9; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        {{ $comment->content }}
+                    </div>
                 @endforeach
             </div>
         </div>
     </div>
 
-    <div class="comment-input-section" style="position: fixed; margin-bottom: 100px; bottom: 0; width: 500px; background: white; padding: 10px; box-shadow: 0 -2px 5px rgba(0,0,0,0.1);">
-        <input type="text" id="comment-content" placeholder="Write a comment..." style="width: 80%; padding: 10px;">
-        <button onclick="addComment()" class="create-post-button" style="padding: 10px 20px;">Send</button>
+    <div class="comment-input-section">
+        <textarea type="text" id="comment-content" placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
+        <a onclick="addComment()" class="create-comment-button">Send</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -40,6 +42,14 @@
                 const commentsDiv = document.getElementById('comments');
                 const newCommentDiv = document.createElement('div');
                 newCommentDiv.classList.add('comment');
+                newCommentDiv.style.width = '25%';
+                newCommentDiv.style.background = '#f9f9f9';
+                newCommentDiv.style.padding = '10px';
+                newCommentDiv.style.border = '1px solid #ddd';
+                newCommentDiv.style.borderRadius = '5px';
+                newCommentDiv.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+                newCommentDiv.style.marginBottom = '10px';
+                newCommentDiv.style.fontSize = '20px';
                 newCommentDiv.innerText = comment.content;
                 commentsDiv.appendChild(newCommentDiv);
                 document.getElementById('comment-content').value = '';

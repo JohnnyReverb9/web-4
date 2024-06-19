@@ -33,6 +33,9 @@ class ControllerTopics extends Controller
 
         $comment = Comments::create($validatedData);
 
+        $topic = Topics::find($validatedData['topic_id']);
+        $topic->increment('comments');
+
         return response()->json($comment);
     }
 }

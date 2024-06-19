@@ -265,3 +265,44 @@ footer p {
 .topic-card p {
     margin: 0;
 }
+
+.comment-input-section {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    background: whitesmoke;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+#comment-content {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.create-comment-button {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border-width: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 14px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    height: 25px;
+}
+.create-comment-button:hover {
+    background-color: #494949;
+}
