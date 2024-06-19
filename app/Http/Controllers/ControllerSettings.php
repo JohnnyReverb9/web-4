@@ -10,4 +10,29 @@ class ControllerSettings extends Controller
     {
         return view("/settings/index");
     }
+
+    public function downloadAll()
+    {
+
+    }
+
+    public function downloadPostsPermanents()
+    {
+
+    }
+
+    public function downloadPosts()
+    {
+
+    }
+
+    public function downloadPermanents()
+    {
+
+    }
+
+    public function downloadTopics()
+    {
+
+    }
 }

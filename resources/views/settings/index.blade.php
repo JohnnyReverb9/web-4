@@ -7,6 +7,18 @@
             <h1 style="font-size: 34px; margin: 0;">Settings</h1>
 {{--            <a href="{{ url('/posts/create') }}" class="create-post-button">Create post</a>--}}
         </div>
+        <div class="post-view">
+            <div class="post-header">
+                <h1 style="font-size: 32px; margin-bottom: 20px">Download:</h1>
+            </div>
+            <div class="posts-grid" style="grid-template-columns: repeat(5, 1fr);">
+                <a href="/settings/download_all" class="create-post-button" style="text-align: center">All</a>
+                <a href="/settings/download_posts_permanents" class="create-post-button" style="text-align: center">Posts&Permanents</a>
+                <a href="/settings/download_posts" class="create-post-button" style="text-align: center">Posts</a>
+                <a href="/settings/download_permanents" class="create-post-button" style="text-align: center">Permanents</a>
+                <a href="/settings/download_topics" class="create-post-button" style="text-align: center">Topics</a>
+            </div>
+        </div>
     </div>
 
 @endsection

@@ -35,6 +35,11 @@ Route::get("/permanent", [ControllerArchive::class, "index"]);
 Route::get("/topics", [ControllerTopics::class, "index"]);
 
 Route::get("/settings", [ControllerSettings::class, "index"]);
+Route::get("/settings/download_all", [ControllerSettings::class, "downloadAll"]);
+Route::get("/settings/download_posts", [ControllerSettings::class, "downloadPosts"]);
+Route::get("/settings/download_permanents", [ControllerSettings::class, "downloadPermanents"]);
+Route::get("/settings/download_topics", [ControllerSettings::class, "downloadTopics"]);
+Route::get("/settings/download_posts_permanents", [ControllerSettings::class, "downloadPostsPermanents"]);
 
 // POST requests
 
