@@ -79,10 +79,10 @@ class ControllerPost extends Controller
         {
             $info = "Permanent post can not be edited.";
             $refer = [
-                "title_btn" => "back",
+                "title_btn" => "Back",
                 "route" => ""
             ];
-           return view("/error_page", compact("info", "refer"));
+           return view("/error/error_page", compact("info", "refer"));
         }
     }
 

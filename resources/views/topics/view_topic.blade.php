@@ -4,7 +4,7 @@
     <div class="container">
         <div class="header-actions">
             <h1 style="font-size: 35px">{{ $topic->topic_title }}</h1>
-            <a onclick="goBack()" class="create-post-button" style="cursor: pointer;">Back</a>
+            <a href="/topics" class="create-post-button" style="cursor: pointer;">Back</a>
         </div>
         <div class="post-header" style="margin-top: -40px">
             <h3>Total comments: <span id="comment-counter">{{ $topic->comments }}</span></h3>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="comment-input-section">
-        <textarea type="text" id="comment-content" placeholder="Write a comment..." oninput="autoResize(this)"></textarea>
+        <textarea type="text" id="comment-content" placeholder="Write a comment..." oninput="autoResize(this)" maxlength="255"></textarea>
         <a onclick="addComment()" class="create-comment-button">Send</a>
     </div>
 

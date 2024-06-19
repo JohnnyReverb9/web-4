@@ -18,6 +18,17 @@ class ControllerTopics extends Controller
     public function viewTopic(Request $request)
     {
         $topic = Topics::where("post_id", $request->post_id)->first();
+
+        if (is_null($topic))
+        {
+            $info = "Topic not found.";
+            $refer = [
+                "title_btn" => "Back",
+                "route" => ""
+            ];
+            return view("/error/error_page", compact("info", "refer"));
+        }
+
         $comments = Comments::where("topic_id", $topic->id)->get();
 
         return view("/topics/view_topic", compact("topic", "comments"));
