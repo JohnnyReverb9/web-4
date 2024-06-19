@@ -36,9 +36,12 @@ header a {
 }
 
 .header-actions {
-    display: flex;
-    justify-content: flex-end;
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .create-post-button {

@@ -4,6 +4,7 @@ use App\Http\Controllers\ControllerArchive;
 use App\Http\Controllers\ControllerGroup;
 use App\Http\Controllers\ControllerMainPage;
 use App\Http\Controllers\ControllerPost;
+use App\Http\Controllers\ControllerTopics;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,12 +23,15 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [ControllerMainPage::class, "index"]);
 
 Route::get("/group", [ControllerGroup::class, "index"]);
+
 Route::get("/posts", [ControllerPost::class, "index"]);
 Route::get("/posts/create", [ControllerPost::class, "formCreatePost"]);
 Route::get("/posts/edit/{id}", [ControllerPost::class, "editPost"]);
 Route::get("/posts/view/{id}", [ControllerPost::class, "viewPost"]);
 
 Route::get("/permanent", [ControllerArchive::class, "index"]);
+
+Route::get("/topics", [ControllerTopics::class, "index"]);
 
 // POST requests
 
@@ -45,5 +49,5 @@ Route::get("/posts/delete/{id}", [ControllerPost::class, "deletePost"]);
 // 404 | Page not found.
 
 Route::fallback(function () {
-    return view("/404");
+    return view("/error/404");
 });

@@ -131,7 +131,7 @@ class ControllerPost extends Controller
                 "title_btn" => "Back",
                 "route" => ""
             ];
-            return view("/error_page", compact("info", "refer"));
+            return view("/error/error_page", compact("info", "refer"));
         }
         elseif ($post->is_published)
         {
@@ -145,7 +145,7 @@ class ControllerPost extends Controller
                 "title_btn" => "Back",
                 "route" => ""
             ];
-            return view("/error_page", compact("info", "refer"));
+            return view("/error/error_page", compact("info", "refer"));
         }
     }
 
@@ -160,7 +160,7 @@ class ControllerPost extends Controller
                 "title_btn" => "Back",
                 "route" => ""
             ];
-            return view("/error_page", compact("info", "refer"));
+            return view("/error/error_page", compact("info", "refer"));
         }
 
         return view("/posts/view_post", compact("post_info"));

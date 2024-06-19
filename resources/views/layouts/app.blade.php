@@ -15,6 +15,7 @@
             <a href="/">Main</a>
             <a href="/posts">Posts</a>
             <a href="/permanent">Permanents</a>
+            <a href="/topics">Topics</a>
         </nav>
     </div>
 </header>
