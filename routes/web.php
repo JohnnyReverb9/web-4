@@ -34,7 +34,6 @@ Route::get("/permanent", [ControllerArchive::class, "index"]);
 
 Route::get("/topics", [ControllerTopics::class, "index"]);
 Route::get("/topics/view/{post_id}", [ControllerTopics::class, "viewTopic"]);
-// Route::get("/topics/open/{id}", [ControllerTopics::class, "openTopic"]);
 
 Route::get("/settings", [ControllerSettings::class, "index"]);
 Route::get("/settings/download_all", [ControllerSettings::class, "downloadAll"]);
@@ -47,6 +46,8 @@ Route::get("/settings/download_posts_permanents", [ControllerSettings::class, "d
 
 Route::post("/posts/create", [ControllerPost::class, "createPost"]);
 Route::post("/posts/update/{id}", [ControllerPost::class, "updatePost"]);
+
+Route::post("/comments/add", [ControllerTopics::class, "addComment"]);
 
 // PUT requests
 
