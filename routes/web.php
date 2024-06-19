@@ -4,6 +4,7 @@ use App\Http\Controllers\ControllerArchive;
 use App\Http\Controllers\ControllerGroup;
 use App\Http\Controllers\ControllerMainPage;
 use App\Http\Controllers\ControllerPost;
+use App\Http\Controllers\ControllerSettings;
 use App\Http\Controllers\ControllerTopics;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,8 @@ Route::get("/posts/view/{id}", [ControllerPost::class, "viewPost"]);
 Route::get("/permanent", [ControllerArchive::class, "index"]);
 
 Route::get("/topics", [ControllerTopics::class, "index"]);
+
+Route::get("/settings", [ControllerSettings::class, "index"]);
 
 // POST requests
 
