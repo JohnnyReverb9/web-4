@@ -2,9 +2,12 @@
 
 @section("content")
     <div class="container">
-        <div class="header-actions">
-            <h1 style="font-size: 35px">{{ $topic->topic_title }}</h1>
-            <a href="/topics" class="create-post-button" style="cursor: pointer;">Back</a>
+        <div class="header-actions" style="display: flex; justify-content: space-between;">
+            <h1 style="font-size: 35px;">{{ $topic->topic_title }}</h1>
+            <div style="display: flex;">
+                <a href="{{ url("/posts/view/" . $topic->post_id) }}" class="create-post-button" style="cursor: pointer; margin-right: 10px;">View Permanent</a>
+                <a href="/topics" class="create-post-button" style="cursor: pointer;">Back</a>
+            </div>
         </div>
         <div class="post-header" style="margin-top: -40px">
             <h3>Total comments: <span id="comment-counter">{{ $topic->comments }}</span></h3>
