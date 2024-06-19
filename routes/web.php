@@ -23,8 +23,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [ControllerMainPage::class, "index"]);
 
-// Route::get("/group", [ControllerGroup::class, "index"]);
-
 Route::get("/posts", [ControllerPost::class, "index"]);
 Route::get("/posts/create", [ControllerPost::class, "formCreatePost"]);
 Route::get("/posts/edit/{id}", [ControllerPost::class, "editPost"]);
