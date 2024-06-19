@@ -29,6 +29,7 @@ class ControllerTopics extends Controller
             'topic_id' => 'required|integer',
             'post_id' => 'required|integer',
             'content' => 'required|string|max:255',
+            'added' => 'required|string'
         ]);
 
         $comment = Comments::create($validatedData);

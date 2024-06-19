@@ -267,18 +267,19 @@ footer p {
 }
 
 .comment-input-section {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50%;
+    width: 75%;
     background: whitesmoke;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
     display: flex;
     gap: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     border-radius: 5px;
+    margin-top: 50px;
 }
 
 #comment-content {
@@ -305,4 +306,12 @@ footer p {
 }
 .create-comment-button:hover {
     background-color: #494949;
+}
+
+.comment {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: background-color 0.3s ease;
 }

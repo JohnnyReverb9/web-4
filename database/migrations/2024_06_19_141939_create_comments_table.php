@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedInteger("topic_id");
             $table->unsignedInteger("post_id");
             $table->text("content");
+            $table->string("added");
             $table->timestamps();
         });
     }
