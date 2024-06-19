@@ -16,11 +16,8 @@ class ControllerTopics extends Controller
 
     public function viewTopic(Request $request)
     {
-        return view("/topics/view_topic");
-    }
+        $topic = Topics::where("post_id", $request->post_id)->first();
 
-    public function openTopic(Request $request)
-    {
-
+        return view("/topics/view_topic", compact("topic"));
     }
 }
