@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Topics;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\If_;
 
 class ControllerPost extends Controller
@@ -43,7 +44,23 @@ class ControllerPost extends Controller
 
         if ($request->hasFile("image"))
         {
-            $image_path = $request->file("image")->store("images", "public");
+            $allowed_formats = ['jpg', 'jpeg', 'png'];
+            $file_extension = $request->file("image")->getClientOriginalExtension();
+
+            if (!in_array(strtolower($file_extension), $allowed_formats))
+            {
+                return redirect()->back()->withInput()->withErrors(['image' => 'Only JPG, JPEG, and PNG images are allowed.']);
+            }
+
+            if ($request->file("image")->isValid())
+            {
+                $image_path = $request->file("image")->store("images", "public");
+            }
+            else
+            {
+                Log::error('Uploaded file is not a valid image.');
+                return redirect()->back()->withInput()->withErrors(['image' => 'Uploaded file is not a valid image.']);
+            }
         }
 
         $is_published = (int)!$request->has("is_published");
@@ -95,37 +112,44 @@ class ControllerPost extends Controller
             "is_published" => "string"
         ]);
 
-        $delete_image = (int)$request->has("delete_image");
-
-        if ($request->hasFile("image"))
-        {
-            $image_path = $request->file("image")->store("images", "public");
-
-            $ret = [
-                "title" => $validated_data["title"],
-                "content" => $validated_data["content"],
-                "image" => $image_path
-            ];
-        }
-        elseif ($delete_image)
-        {
-            $ret = [
-                "title" => $validated_data["title"],
-                "content" => $validated_data["content"],
-                "image" => null
-            ];
-        }
-        else
-        {
-            $ret = [
-                "title" => $validated_data["title"],
-                "content" => $validated_data["content"]
-            ];
-        }
+        $delete_image = (int) $request->has("delete_image");
 
         $post = Post::find($request->id);
 
-        $post->update($ret);
+        if (!$post)
+        {
+            return redirect("/posts")->with("error", "Post not found");
+        }
+
+        if ($request->hasFile("image"))
+        {
+            $allowed_formats = ['jpg', 'jpeg', 'png'];
+            $file_extension = $request->file("image")->getClientOriginalExtension();
+
+            if (!in_array(strtolower($file_extension), $allowed_formats))
+            {
+                return redirect()->back()->withInput()->withErrors(['image' => 'Only JPG, JPEG, and PNG images are allowed.']);
+            }
+
+            if ($request->file("image")->isValid())
+            {
+                $image_path = $request->file("image")->store("images", "public");
+                $post->image = $image_path;
+            }
+            else
+            {
+                Log::error('Uploaded file is not a valid image.');
+                return redirect()->back()->withInput()->withErrors(['image' => 'Uploaded file is not a valid image.']);
+            }
+        }
+        elseif ($delete_image)
+        {
+            $post->image = null;
+        }
+
+        $post->title = $validated_data["title"];
+        $post->content = $validated_data["content"];
+        $post->save();
 
         return redirect("/posts")->with("success", "Post updated successfully");
     }

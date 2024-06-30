@@ -26,8 +26,11 @@
                     <span>No image uploaded</span>
                     <br><br>
                 @endif
-                <label for="new_image">New Image (.jpg only):</label>
-                <input type="file" id="image" name="image" style="font-size: 18px;">
+                <label for="new_image">New Image (.jpg/.png only):</label>
+                <input type="file" id="image" name="image" style="font-size: 18px;" accept="image/*">
+                @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="is_published">Delete current image:</label>

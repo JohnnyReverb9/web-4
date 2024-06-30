@@ -18,8 +18,11 @@
                 <textarea id="content" name="content" rows="1" placeholder="Tell the story..." oninput="autoResize(this)"></textarea>
             </div>
             <div class="form-group">
-                <label for="image">Image (.jpg only):</label>
-                <input type="file" id="image" name="image" style="font-size: 18px;">
+                <label for="image">Image (.jpg/.png only):</label>
+                <input type="file" id="image" name="image" style="font-size: 18px;" accept="image/*">
+                @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="is_published">Permanent:</label>
