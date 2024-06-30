@@ -91,7 +91,7 @@ class ControllerPost extends Controller
         $validated_data = $request->validate([
             "title" => "required|string|max:255",
             "content" => "nullable|string",
-            "image" => "nullable|image|max:2048|jpg",
+            "image" => "nullable|image|max:2048",
             "is_published" => "string"
         ]);
 
