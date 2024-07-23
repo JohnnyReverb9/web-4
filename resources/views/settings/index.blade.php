@@ -22,7 +22,7 @@
                 <h1 style="font-size: 32px;">Contacts</h1>
             </div>
             <div class="post-content" style="margin-top: -30px">
-                <p>Teleram: <a href="https://t.me/Johnny_Reverb" id="profile-link">&#64;Johnny_Reverb</a></p>
+                <p>Telegram: <a href="https://t.me/Johnny_Reverb" id="profile-link">&#64;Johnny_Reverb</a></p>
             </div>
         </div>
     </div>
