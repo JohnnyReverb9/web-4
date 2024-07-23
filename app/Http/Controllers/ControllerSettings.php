@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tcpdf;
 
 class ControllerSettings extends Controller
 {
@@ -23,7 +24,11 @@ class ControllerSettings extends Controller
 
     public function downloadPosts()
     {
-
+        $pdf = new Tcpdf();
+        $pdf->AddPage();
+        $pdf->SetFont('helvetica', '', 12);
+        $pdf->Write(0, 'Hello World');
+        $pdf->Output('example.pdf', 'I');
     }
 
     public function downloadPermanents()
