@@ -20,12 +20,180 @@ class ControllerSettings extends Controller
 
     public function downloadAll()
     {
+        $posts = $this->getPosts();
+        $permanents = $this->getPermanents();
+        $topics = $this->getTopics();
+        $i = 1;
 
+        $pdf = new Tcpdf();
+        $pdf->AddPage();
+        $pdf->SetFont('freeserif', 'B', 14);
+        $pdf->Write(0, "POSTS" . "\n\n", "", false, "C");
+
+        foreach ($posts as $post)
+        {
+            $pdf->SetFont('freeserif', 'B', 14);
+            $pdf->Write(0, "Post #" . $i . ": " . $post->title . "\n\n");
+
+            $pdf->SetFont('freeserif', '', 12);
+            $pdf->Write(0, $post->content . "\n\n");
+
+            if ($post->image)
+            {
+                $image_path = storage_path("app/public/" . $post->image);
+
+                if (file_exists($image_path))
+                {
+                    $type = str_ends_with($image_path, "jpg") ? "JPG" : "PNG";
+                    $pdf->Image($image_path, 75, $pdf->GetY(), 60, 60, $type, '', 'T', true, 300, '', false, false, 1, false, false, false);
+                    $pdf->Ln(70);
+                }
+            }
+
+            $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
+            $pdf->Ln(10);
+
+            $i++;
+        }
+
+        $pdf->SetFont('freeserif', 'B', 14);
+        $pdf->Write(0, "PERMANENTS" . "\n\n", "", false, "C");
+        $i = 1;
+
+        foreach ($permanents as $permanent)
+        {
+            $pdf->SetFont('freeserif', 'B', 14);
+            $pdf->Write(0, "Permanent #" . $i . ": " . $permanent->title . "\n\n");
+
+            $pdf->SetFont('freeserif', '', 12);
+            $pdf->Write(0, $permanent->content . "\n\n");
+
+            if ($permanent->image) {
+                $image_path = storage_path("app/public/" . $permanent->image);
+
+                if (file_exists($image_path))
+                {
+                    $type = str_ends_with($image_path, "jpg") ? "JPG" : "PNG";
+                    $pdf->Image($image_path, 75, $pdf->GetY(), 60, 60, $type, '', 'T', true, 300, '', false, false, 1, false, false, false);
+                    $pdf->Ln(70);
+                }
+            }
+
+            $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
+            $pdf->Ln(10);
+
+            $i++;
+        }
+
+        $pdf->SetFont('freeserif', 'B', 14);
+        $pdf->Write(0, "TOPICS" . "\n\n", "", false, "C");
+        $i = 1;
+
+        foreach ($topics as $topic)
+        {
+            $pdf->SetFont('freeserif', 'B', 14);
+            $pdf->Write(0, "Topic #" . $i . ": " . $topic->topic_title . "\n");
+
+            $pdf->SetFont('freeserif', 'B', 12);
+            $pdf->Write(0, "Total comments: " . $topic->comments . "\n\n");
+
+            $comments = $this->getCommentsByTopic($topic->id);
+            $j = 1;
+
+            foreach ($comments as $comment)
+            {
+                $pdf->SetFont('freeserif', 'B', 12);
+                $pdf->Write(0, "Comment #$j: " . "\n");
+
+                $pdf->SetFont('freeserif', '', 12);
+                $pdf->Write(0, $comment->content . "\n\n");
+
+                $j++;
+            }
+
+            $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
+            $pdf->Ln(10);
+
+            $i++;
+        }
+
+        $today = now()->format("H:i:s d-m-Y");
+        $title = $this->title . " ALL " . $today . ".pdf";
+
+        $pdf->Output($title, "D");
     }
 
     public function downloadPostsPermanents()
     {
+        $posts = $this->getPosts();
+        $permanents = $this->getPermanents();
+        $i = 1;
 
+        $pdf = new Tcpdf();
+        $pdf->AddPage();
+        $pdf->SetFont('freeserif', 'B', 14);
+        $pdf->Write(0, "POSTS" . "\n\n", "", false, "C");
+
+        foreach ($posts as $post)
+        {
+            $pdf->SetFont('freeserif', 'B', 14);
+            $pdf->Write(0, "Post #" . $i . ": " . $post->title . "\n\n");
+
+            $pdf->SetFont('freeserif', '', 12);
+            $pdf->Write(0, $post->content . "\n\n");
+
+            if ($post->image)
+            {
+                $image_path = storage_path("app/public/" . $post->image);
+
+                if (file_exists($image_path))
+                {
+                    $type = str_ends_with($image_path, "jpg") ? "JPG" : "PNG";
+                    $pdf->Image($image_path, 75, $pdf->GetY(), 60, 60, $type, '', 'T', true, 300, '', false, false, 1, false, false, false);
+                    $pdf->Ln(70);
+                }
+            }
+
+            $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
+            $pdf->Ln(10);
+
+            $i++;
+        }
+
+        $pdf->SetFont('freeserif', 'B', 14);
+        $pdf->Write(0, "PERMANENTS" . "\n\n", "", false, "C");
+        $i = 1;
+
+        foreach ($permanents as $permanent)
+        {
+            $pdf->SetFont('freeserif', 'B', 14);
+            $pdf->Write(0, "Permanent #" . $i . ": " . $permanent->title . "\n\n");
+
+            $pdf->SetFont('freeserif', '', 12);
+            $pdf->Write(0, $permanent->content . "\n\n");
+
+            if ($permanent->image)
+            {
+                $image_path = storage_path("app/public/" . $permanent->image);
+
+                if (file_exists($image_path))
+                {
+                    $type = str_ends_with($image_path, "jpg") ? "JPG" : "PNG";
+                    $pdf->Image($image_path, 75, $pdf->GetY(), 60, 60, $type, '', 'T', true, 300, '', false, false, 1, false, false, false);
+                    $pdf->Ln(70);
+                }
+            }
+
+            $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
+            $pdf->Ln(10);
+
+            $i++;
+        }
+
+        $today = now()->format("H:i:s d-m-Y");
+        $title = $this->title . " POSTS AND PERMANENTS " . $today . ".pdf";
+
+        $pdf->Output($title, "D");
     }
 
     public function downloadPosts(): void
@@ -37,17 +205,20 @@ class ControllerSettings extends Controller
         $pdf->AddPage();
         $pdf->SetFont('freeserif', '', 12);
 
-        foreach ($posts as $post) {
+        foreach ($posts as $post)
+        {
             $pdf->SetFont('freeserif', 'B', 14);
             $pdf->Write(0, "Post #" . $i . ": " . $post->title . "\n\n");
 
             $pdf->SetFont('freeserif', '', 12);
             $pdf->Write(0, $post->content . "\n\n");
 
-            if ($post->image) {
+            if ($post->image)
+            {
                 $image_path = storage_path("app/public/" . $post->image);
 
-                if (file_exists($image_path)) {
+                if (file_exists($image_path))
+                {
                     $type = str_ends_with($image_path, "jpg") ? "JPG" : "PNG";
                     $pdf->Image($image_path, 75, $pdf->GetY(), 60, 60, $type, '', 'T', true, 300, '', false, false, 1, false, false, false);
                     $pdf->Ln(70);
@@ -75,17 +246,20 @@ class ControllerSettings extends Controller
         $pdf->AddPage();
         $pdf->SetFont('freeserif', '', 12);
 
-        foreach ($permanents as $permanent) {
+        foreach ($permanents as $permanent)
+        {
             $pdf->SetFont('freeserif', 'B', 14);
             $pdf->Write(0, "Permanent #" . $i . ": " . $permanent->title . "\n\n");
 
             $pdf->SetFont('freeserif', '', 12);
             $pdf->Write(0, $permanent->content . "\n\n");
 
-            if ($permanent->image) {
+            if ($permanent->image)
+            {
                 $image_path = storage_path("app/public/" . $permanent->image);
 
-                if (file_exists($image_path)) {
+                if (file_exists($image_path))
+                {
                     $type = str_ends_with($image_path, "jpg") ? "JPG" : "PNG";
                     $pdf->Image($image_path, 75, $pdf->GetY(), 60, 60, $type, '', 'T', true, 300, '', false, false, 1, false, false, false);
                     $pdf->Ln(70);
@@ -113,7 +287,8 @@ class ControllerSettings extends Controller
         $pdf->AddPage();
         $pdf->SetFont('freeserif', '', 12);
 
-        foreach ($topics as $topic) {
+        foreach ($topics as $topic)
+        {
             $pdf->SetFont('freeserif', 'B', 14);
             $pdf->Write(0, "Topic #" . $i . ": " . $topic->topic_title . "\n");
 
@@ -123,7 +298,8 @@ class ControllerSettings extends Controller
             $comments = $this->getCommentsByTopic($topic->id);
             $j = 1;
 
-            foreach ($comments as $comment) {
+            foreach ($comments as $comment)
+            {
                 $pdf->SetFont('freeserif', 'B', 12);
                 $pdf->Write(0, "Comment #$j: " . "\n");
 
