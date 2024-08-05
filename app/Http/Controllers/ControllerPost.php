@@ -104,6 +104,16 @@ class ControllerPost extends Controller
     {
         $post = Post::find($request->id);
 
+        if (is_null($post))
+        {
+            $info = "Post not found.";
+            $refer = [
+                "title_btn" => "Back",
+                "route" => ""
+            ];
+            return view("/error/error_page", compact("info", "refer"));
+        }
+
         if ($post->is_published)
         {
             $user_cookie = UserCookie::find($post->id);
