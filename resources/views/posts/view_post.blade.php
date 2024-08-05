@@ -17,7 +17,7 @@
         <div class="post-view">
             <div class="post-header">
                 <h1 style="font-size: 35px">{{ $post_info->title }}</h1>
-                @if ($post_info->is_published)
+                @if ($post_info->is_published && $flag == 0)
                     <a href="{{ url('/posts/edit/' . $post_info->id) }}" class="edit-button">
                         <img src="{{ asset("assets/pencil.svg") }}" width="25" height="25" alt="edit" style="position: absolute; right: 20px; top: 49px;">
                     </a>

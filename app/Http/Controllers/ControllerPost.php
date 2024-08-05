@@ -25,6 +25,8 @@ class ControllerPost extends Controller
        //     dump($post->title);
        // }
 
+        // $flag = $this->validateCookie()
+
         return view("posts/index", compact("posts"));
     }
 
@@ -116,20 +118,16 @@ class ControllerPost extends Controller
 
         if ($post->is_published)
         {
-            $user_cookie = UserCookie::find($post->id);
-            $cookie_name = $user_cookie->cookie_name;
-            $cookie_value = $user_cookie->cookie_value;
+            $flag = $this->validateCookie($post);
 
-            if (Cookie::get($cookie_name) !== $cookie_value) {
-                $info = "Edit / Delete post time out.";
-                $refer = [
-                    "title_btn" => "Main",
-                    "route" => "/"
-                ];
-                return view("/error/error_page", compact("info", "refer"));
+            if ($flag == 0)
+            {
+                return view("/posts/edit_post", compact("post", "flag"));
             }
-
-            return view("/posts/edit_post", compact("post"));
+            else
+            {
+                return view("/error/error_page", $flag);
+            }
         }
         else
         {
@@ -144,6 +142,13 @@ class ControllerPost extends Controller
 
     public function updatePost(Request $request)
     {
+        $flag = $this->validateCookie($request);
+
+        if ($flag != 0)
+        {
+            return view("/error/error_page", $flag);
+        }
+
         $validated_data = $request->validate([
             "title" => "required|string|max:255",
             "content" => "nullable|string",
@@ -208,8 +213,17 @@ class ControllerPost extends Controller
         }
         elseif ($post->is_published)
         {
-            $post->delete();
-            return redirect("/posts")->with("success", "Post deleted successfully");
+            $flag = $this->validateCookie($post);
+
+            if ($flag != 0)
+            {
+                return view("/error/error_page", $flag);
+            }
+            else
+            {
+                $post->delete();
+                return redirect("/posts")->with("success", "Post deleted successfully, cookie: $flag");
+            }
         }
         else
         {
@@ -236,6 +250,37 @@ class ControllerPost extends Controller
             return view("/error/error_page", compact("info", "refer"));
         }
 
-        return view("/posts/view_post", compact("post_info"));
+        $flag = 1;
+
+        if ($post_info->is_published)
+        {
+            $flag = $this->validateCookie($post_info);
+
+            if ($flag != 0)
+            {
+                return view("/posts/view_post", compact("post_info", "flag"));
+            }
+        }
+
+        return view("/posts/view_post", compact("post_info", "flag"));
+    }
+
+    private function validateCookie($post)
+    {
+        $user_cookie = UserCookie::find($post->id);
+        $cookie_name = $user_cookie->cookie_name;
+        $cookie_value = $user_cookie->cookie_value;
+
+        if (Cookie::get($cookie_name) !== $cookie_value)
+        {
+            $info = "Edit / Delete post time out.";
+            $refer = [
+                "title_btn" => "Main",
+                "route" => "/"
+            ];
+            return compact("info", "refer");
+        }
+
+        return 0;
     }
 }
