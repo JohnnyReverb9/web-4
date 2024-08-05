@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Asocial Network</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="icon" href="{{ asset('assets/favicon.ico') }}">
 </head>
 <body>
 <header>

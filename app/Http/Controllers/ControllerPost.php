@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Topics;
+use App\Models\UserCookie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\If_;
 
@@ -80,6 +82,20 @@ class ControllerPost extends Controller
             ]);
         }
 
+        if ($is_published)
+        {
+            $cookie_name = 'post_' . $post->id;
+            $cookie_value = bin2hex(random_bytes(16));
+
+            Cookie::queue($cookie_name, $cookie_value, 60 * 12);
+
+            UserCookie::create([
+                "post_id" => $post->id,
+                "cookie_name" => $cookie_name,
+                "cookie_value" => $cookie_value
+            ]);
+        }
+
         if ($is_published) return redirect("/posts")->with("success", "Post created successfully");
         else return redirect("/permanent")->with("success", "Permanent post created successfully");
     }
@@ -90,6 +106,19 @@ class ControllerPost extends Controller
 
         if ($post->is_published)
         {
+            $user_cookie = UserCookie::find($post->id);
+            $cookie_name = $user_cookie->cookie_name;
+            $cookie_value = $user_cookie->cookie_value;
+
+            if (Cookie::get($cookie_name) !== $cookie_value) {
+                $info = "Edit / Delete post time out.";
+                $refer = [
+                    "title_btn" => "Main",
+                    "route" => "/"
+                ];
+                return view("/error/error_page", compact("info", "refer"));
+            }
+
             return view("/posts/edit_post", compact("post"));
         }
         else
