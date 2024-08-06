@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\classes\post\ManagementPost;
 use App\Models\Post;
 use App\Models\Topics;
 use App\Models\UserCookie;
@@ -27,7 +28,9 @@ class ControllerPost extends Controller
 
         // $flag = $this->validateCookie()
 
-        return view("posts/index", compact("posts"));
+        $available_edit = ManagementPost::getPostsAbleToEditDelete();
+
+        return view("posts/index", compact("posts", "available_edit"));
     }
 
     public function formCreatePost()
@@ -89,7 +92,7 @@ class ControllerPost extends Controller
             $cookie_name = 'post_' . $post->id;
             $cookie_value = bin2hex(random_bytes(16));
 
-            Cookie::queue($cookie_name, $cookie_value, 60 * 12);
+            Cookie::queue($cookie_name, $cookie_value, 60 * 24); // 24 hours to edit
 
             UserCookie::create([
                 "post_id" => $post->id,

@@ -2,7 +2,7 @@
 
 namespace App\classes;
 
-class ManagementBase
+abstract class ManagementBase
 {
     // ...
 }
