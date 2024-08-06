@@ -29,14 +29,15 @@
         <h3>What Can You Do Here?</h3>
         <ul>
             <li><strong>Create Posts:</strong> share your thoughts, experiences, and insights. Whether it's a quick update or an in-depth article, your words matter.</li>
-            <li><strong>Add Images:</strong> a picture is worth a thousand words. Enhance your posts with images to tell your story more vividly.</li>
-            <li><strong>Edit and Delete:</strong> flexibility is key. Modify your posts as your thoughts evolve or remove them when they no longer represent you.</li>
-            <li><strong>Permanent Posts:</strong> mark important posts as permanent to keep them at the forefront of your profile.</li>
+            <li><strong>Add Images:</strong> a picture is worth a thousand words. Enhance your Posts with images to tell your story more vividly.</li>
+            <li><strong>Edit and Delete:</strong> flexibility is key. Modify your Posts as your thoughts evolve or remove them when they no longer represent you.</li>
+            <li><strong>Mind the Time:</strong> you will have only 24 hours to edit or delete your Posts after release.</li>
+            <li><strong>Permanent Posts:</strong> mark important Posts as Permanent to keep them at the forefront of your profile.</li>
         </ul>
         <h3>Why Asocial Network?</h3>
         <p>We believe in the power of individual expression. Our platform is user-friendly, secure, and designed to keep your content front and center. Connect with like-minded individuals, discover new perspectives, and make your mark.</p>
         <h3>Can I Try It?</h3>
-        <p>Sure. Go to Posts page and make your first post OR go to Topics and discuss about Permanents.</p>
+        <p>Sure. Go to Posts page and make your first Post OR go to Topics and discuss about Permanents.</p>
         <h3>Enjoy?</h3>
         <p>Enjoy.</p>
     </div>
