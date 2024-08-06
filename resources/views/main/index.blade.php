@@ -38,8 +38,19 @@
         <p>We believe in the power of individual expression. Our platform is user-friendly, secure, and designed to keep your content front and center. Connect with like-minded individuals, discover new perspectives, and make your mark.</p>
         <h3>Can I Try It?</h3>
         <p>Sure. Go to Posts page and make your first Post OR go to Topics and discuss about Permanents.</p>
+        <h2>Important!</h2>
+        <h3>Community Guidelines: What Not to Post</h3>
+        <p>To maintain a respectful and safe environment, please follow these guidelines:</p>
+        <ul>
+            <li><strong>Prohibited Content:</strong> hate speech, harassment, illegal activities, graphic violence, adult content, misinformation, and spam.</li>
+            <li><strong>Respect Intellectual Property:</strong> don't post content that infringes on others' rights.</li>
+            <li><strong>Privacy Matters:</strong> respect others' privacy and don't share personal information without consent.</li>
+            <li><strong>Keep it Civil:</strong> avoid personal attacks, inflammatory language, and trolling.</li>
+        </ul>
+        <p>Violating these guidelines may result in content removal, account suspension, or a permanent ban. Thank you for your cooperation. Enjoy Asocial Network responsibly.</p>
         <h3>Enjoy?</h3>
         <p>Enjoy.</p>
     </div>
+
 
 @endsection
