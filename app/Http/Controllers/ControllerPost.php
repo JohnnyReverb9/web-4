@@ -275,8 +275,8 @@ class ControllerPost extends Controller
         {
             $info = "Edit / Delete post time out.";
             $refer = [
-                "title_btn" => "Main",
-                "route" => "/"
+                "title_btn" => "Back",
+                "route" => ""
             ];
             return compact("info", "refer");
         }
