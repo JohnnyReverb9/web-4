@@ -7,6 +7,11 @@
     <title>Asocial Network</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="icon" href="{{ asset('assets/favicon.ico') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset("js/autoresize_textarea.js") }}"></script>
+    <script src="{{ asset("js/textarea_resize.js") }}"></script>
+    <script src="{{ asset("js/footer.js") }}"></script>
+    <script src="{{ asset("js/go_back.js") }}"></script>
 </head>
 <body>
 <header>
@@ -29,10 +34,5 @@
 <footer>
     <p>&copy; 2024 Asocial Network</p>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="{{ asset("js/autoresize_textarea.js") }}"></script>
-<script src="{{ asset("js/textarea_resize.js") }}"></script>
-<script src="{{ asset("js/footer.js") }}"></script>
-<script src="{{ asset("js/go_back.js") }}"></script>
 </body>
 </html>

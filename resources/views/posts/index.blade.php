@@ -6,6 +6,11 @@
             <h1 style="font-size: 34px; margin: 0">Posts</h1>
             <a href="{{ url('/posts/create') }}" class="create-post-button">Create post</a>
         </div>
+        @if (session("success"))
+            <div id="alert">
+                <span>{{ session("success") }}</span>
+            </div>
+        @endif
         <div class="posts-grid">
             @if($posts->count())
                 @foreach($posts as $post)
@@ -32,5 +37,29 @@
             @endif
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            let notification = $("#alert");
+            notification.css({
+                position: 'fixed',
+                bottom: '65px',
+                right: '20px',
+                backgroundColor: 'whitesmoke',
+                color: 'black',
+                padding: '10px 20px',
+                borderRadius: '5px',
+                zIndex: '1000',
+                opacity: '1',
+                transition: 'opacity 1s ease-in-out'
+            });
+            $('body').append(notification);
+            setTimeout(function () {
+                notification.css('opacity', '0');
+                setTimeout(function () {
+                    notification.remove();
+                }, 1000);
+            }, 1000);
+        });
+    </script>
 
 @endsection

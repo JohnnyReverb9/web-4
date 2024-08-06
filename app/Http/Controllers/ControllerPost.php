@@ -101,8 +101,8 @@ class ControllerPost extends Controller
             ]);
         }
 
-        if ($is_published) return redirect("/posts")->with("success", "Post created successfully");
-        else return redirect("/permanent")->with("success", "Permanent post created successfully");
+        if ($is_published) return redirect("/posts")->with("success", "Post created successfully.");
+        else return redirect("/permanent")->with("success", "Permanent post created successfully.");
     }
 
     public function editPost(Request $request)
@@ -198,7 +198,7 @@ class ControllerPost extends Controller
         $post->content = $validated_data["content"];
         $post->save();
 
-        return redirect("/posts")->with("success", "Post updated successfully");
+        return redirect("/posts")->with("success", "Post updated successfully.");
     }
 
     public function deletePost(Request $request)
@@ -225,7 +225,7 @@ class ControllerPost extends Controller
             else
             {
                 $post->delete();
-                return redirect("/posts")->with("success", "Post deleted successfully, cookie: $flag");
+                return redirect("/posts")->with("success", "Post deleted successfully.");
             }
         }
         else
