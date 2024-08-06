@@ -270,7 +270,7 @@ class ControllerPost extends Controller
 
     private function validateCookie($post)
     {
-        $user_cookie = UserCookie::find($post->id);
+        $user_cookie = UserCookie::where("post_id", $post->id)->first();
         $cookie_name = $user_cookie->cookie_name;
         $cookie_value = $user_cookie->cookie_value;
 
