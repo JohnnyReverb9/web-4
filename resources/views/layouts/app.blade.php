@@ -32,7 +32,7 @@
     </div>
 </main>
 <footer>
-    <p>&copy; 2024 Asocial Network <span id="ver">v1.0.0</span></p>
+    <p>&copy; {{ now()->format("Y") }} Asocial Network <span id="ver">v1.0.1</span></p>
 </footer>
 </body>
 </html>
