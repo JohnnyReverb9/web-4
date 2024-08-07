@@ -18,6 +18,12 @@
                 <a href="/settings/download_permanents" class="create-post-button" style="text-align: center">Permanents</a>
                 <a href="/settings/download_topics" class="create-post-button" style="text-align: center">Topics</a>
             </div>
+            <div class="post-header">
+                <h1 style="font-size: 32px; margin-bottom: 20px">Stats</h1>
+            </div>
+            <div class="post-content" style="margin-top: -30px">
+
+            </div>
             <div class="post-header" style="margin-top: 30px">
                 <h1 style="font-size: 32px;">Contacts</h1>
             </div>
