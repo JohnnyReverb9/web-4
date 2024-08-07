@@ -47,7 +47,9 @@
             <li><strong>Privacy Matters:</strong> respect others' privacy and don't share personal information without consent.</li>
             <li><strong>Keep it Civil:</strong> avoid personal attacks, inflammatory language, and trolling.</li>
         </ul>
-        <p>Violating these guidelines may result in content removal, account suspension, or a permanent ban. Thank you for your cooperation. Enjoy Asocial Network responsibly.</p>
+        <p>Violating these guidelines may result in content removal or a permanent ban. Thank you for your cooperation. Enjoy Asocial Network responsibly.</p>
+        <h3>Using Cookies?</h3>
+        <p>Yes. We are using cookie for Post editing / deleting.</p>
         <h3>Enjoy?</h3>
         <p>Enjoy.</p>
     </div>
