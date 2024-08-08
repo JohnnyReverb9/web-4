@@ -16,7 +16,7 @@
                 <span>{{ session("success") }}</span>
             </div>
         @endif
-        <div class="topics-list" style="margin-top: 20px; display: grid; grid-template-columns: repeat(2, 1fr);" id="search_results">
+        <div class="topics-list" style="margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr);" id="search_results">
             @include("topics/search/topics_index", ["topics" => $topics, "last_comments" => $last_comments])
         </div>
     </div>
