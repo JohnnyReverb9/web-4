@@ -7,20 +7,16 @@
     </div>
     <div class="stats-container">
         <div class="stats-item">
-            <span>All posts:</span>
+            <span>Total:</span>
             <span>{{ $all_posts }}</span>
         </div>
         <div class="stats-item">
-            <span>Published:</span>
+            <span>Posts:</span>
             <span>{{ $published_posts }}</span>
         </div>
         <div class="stats-item">
             <span>Permanents:</span>
             <span>{{ $archived_posts }}</span>
-        </div>
-        <div class="stats-item">
-            <span>Topics:</span>
-            <span>{{ $topics }}</span>
         </div>
     </div>
     <div class="container" style="font-size: 22px">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comments;
+use App\Models\Main;
 use App\Models\Post;
 use App\Models\Topics;
 use Illuminate\Http\Request;
@@ -15,7 +16,13 @@ class ControllerSettings extends Controller
 
     public function index()
     {
-        return view("/settings/index");
+        $all_posts = Main::all()->count();
+        $published_posts = Main::where("is_published", 1)->get()->count();
+        $archived_posts = Main::where("is_published", 0)->get()->count();
+        $topics = Topics::all()->count();
+        $comments = Comments::all()->count();
+
+        return view("/settings/index", compact("all_posts", "published_posts", "archived_posts", "topics", "comments"));
     }
 
     public function downloadAll()
