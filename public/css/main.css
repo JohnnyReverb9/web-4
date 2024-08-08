@@ -73,6 +73,7 @@ header a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     transition: background-color 0.3s ease;
+    word-break: break-all;
 }
 
 .post:hover {
@@ -204,6 +205,8 @@ footer p {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 #is_published {

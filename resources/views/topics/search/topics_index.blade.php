@@ -6,7 +6,7 @@
         </div>
         <div class="post" style="margin-bottom: 20px" onclick="window.location='{{ url("/topics/view/" . $topic->post_id) }}'">
             <h2 style="font-size: 22px; margin: 0 0 10px;">Last comment:</h2>
-            <p style="font-size: 20px">{{ $last_comments[$topic->id] ?? "No comments yet." }}</p>
+            <p style="font-size: 20px" id="text_container">{{ $last_comments[$topic->id] ?? "No comments yet." }}</p>
         </div>
     @endforeach
 @else

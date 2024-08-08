@@ -19,7 +19,7 @@
                         <div class="post-header" style="font-size: 15px; color: #727171">
                             {{ $comment->added }}
                         </div>
-                        <div class="post-content">
+                        <div class="post-content" style="word-break: break-all;">
                             {{ $comment->content }}
                         </div>
                     </div>
