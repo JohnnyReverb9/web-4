@@ -19,5 +19,5 @@
         </div>
     @endforeach
 @else
-    <h1>No posts found.</h1>
+    <h1>No Posts found.</h1>
 @endif

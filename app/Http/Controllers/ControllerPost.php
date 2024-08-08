@@ -23,7 +23,7 @@ class ControllerPost extends Controller
 
         if ($search)
         {
-            $posts = Post::where('title', 'LIKE', "%$search")
+            $posts = Post::where('title', 'LIKE', "%$search%")
                 ->where("is_published", 1)
                 ->get();
         }
