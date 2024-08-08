@@ -13,22 +13,33 @@ use PhpParser\Node\Stmt\If_;
 
 class ControllerPost extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // $post = Post::find(1);
         // $posts = Post::all();
         // $post = Post::where("is_published", 1)->first(); // object
 
-        $posts = Post::where("is_published", 1)->get(); // collection
+        $search = $request->input('search');
 
-       // foreach ($posts as $post)
-       // {
-       //     dump($post->title);
-       // }
-
-        // $flag = $this->validateCookie()
+        if ($search)
+        {
+            $posts = Post::where('title', 'LIKE', "%$search")
+                ->where("is_published", 1)
+                ->get();
+        }
+        else
+        {
+            $posts = Post::where("is_published", 1)->get(); // collection
+        }
 
         $available_edit = ManagementPost::getPostsAbleToEditDelete();
+
+        if ($request->ajax())
+        {
+            return response()->json([
+                "html" => view("posts/search/index_content", compact("posts", "available_edit"))->render()
+            ]);
+        }
 
         return view("posts/index", compact("posts", "available_edit"));
     }
