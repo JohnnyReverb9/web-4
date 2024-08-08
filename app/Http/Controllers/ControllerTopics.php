@@ -8,9 +8,25 @@ use Illuminate\Http\Request;
 
 class ControllerTopics extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $topics = Topics::all();
+        $search = $request->input('search');
+
+        if ($search)
+        {
+            $topics = Topics::where('topic_title', 'LIKE', "%$search%")->get();
+        }
+        else
+        {
+            $topics = Topics::all();
+        }
+
+        if ($request->ajax())
+        {
+            return response()->json([
+                "html" => view("topics/search/topics_index", compact("topics"))->render()
+            ]);
+        }
 
         return view("/topics/topics", compact("topics"));
     }
