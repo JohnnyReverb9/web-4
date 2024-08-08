@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ asset("js/autoresize_textarea.js") }}"></script>
     <script src="{{ asset("js/textarea_resize.js") }}"></script>
-    <script src="{{ asset("js/footer.js") }}"></script>
     <script src="{{ asset("js/go_back.js") }}"></script>
 </head>
 <body>
@@ -32,7 +31,7 @@
     </div>
 </main>
 <footer>
-    <p>&copy; {{ now()->format("Y") }} Asocial Network <span id="ver">v1.0.6</span></p>
+    <p>&copy; {{ now()->format("Y") }} Asocial Network <span id="ver">v1.1.0</span></p>
 </footer>
 </body>
 </html>

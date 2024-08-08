@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\classes\topic\ManagementTopic;
 use App\Models\Comments;
 use App\Models\Topics;
 use Illuminate\Http\Request;
@@ -21,14 +22,16 @@ class ControllerTopics extends Controller
             $topics = Topics::all();
         }
 
+        $last_comments = ManagementTopic::getLastComments();
+
         if ($request->ajax())
         {
             return response()->json([
-                "html" => view("topics/search/topics_index", compact("topics"))->render()
+                "html" => view("topics/search/topics_index", compact("topics", "last_comments"))->render()
             ]);
         }
 
-        return view("/topics/topics", compact("topics"));
+        return view("/topics/topics", compact("topics", "last_comments"));
     }
 
     public function viewTopic(Request $request)

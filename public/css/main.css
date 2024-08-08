@@ -181,13 +181,13 @@ textarea {
 footer {
     background-color: black;
     color: #fff;
-    padding: 20px 0;
     text-align: center;
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0;
     margin-top: 10px;
     height: 7px;
+    padding: 10px 0 20px;
 }
 
 footer p {
