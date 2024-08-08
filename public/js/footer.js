@@ -12,12 +12,16 @@ $(document).ready(function() {
         if (bodyHeight < viewportHeight) {
             $('footer').css({
                 'position': 'fixed',
-                'bottom': '0'
+                'bottom': '0',
             });
         } else {
+            // $('footer').css({
+            //     'position': 'relative',
+            //     'bottom': 'auto'
+            // });
             $('footer').css({
-                'position': 'relative',
-                'bottom': 'auto'
+                'position': 'fixed',
+                'bottom': '0',
             });
         }
     }
