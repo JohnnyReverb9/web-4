@@ -31,7 +31,7 @@
     </div>
 </main>
 <footer>
-    <p>&copy; {{ now()->format("Y") }} Asocial Network <span id="ver">v1.1.0</span></p>
+    <p>&copy; {{ now()->format("Y") }} Asocial Network <span id="ver">v1.1.1</span></p>
 </footer>
 </body>
 </html>
