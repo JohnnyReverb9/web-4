@@ -72,7 +72,16 @@ class ControllerTopics extends Controller
 
     public function createTopic(Request $request)
     {
+        $validatedData = $request->validate([
+            "topic_title" => "required|string|max:255",
+        ]);
 
+        $topic = Topics::create([
+            "post_id" => 0,
+            "topic_title" => $validatedData["topic_title"]
+        ]);
+
+        return redirect("/topics")->with("success", "Topic created successfully.");
     }
 
     public function createTopicForm()

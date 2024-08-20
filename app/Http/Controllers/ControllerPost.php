@@ -132,7 +132,7 @@ class ControllerPost extends Controller
 
         if ($post->is_published)
         {
-            $flag = $this->validateCookie($post);
+            $flag = $this->validateCookiePost($post);
 
             if ($flag == 0)
             {
@@ -156,7 +156,7 @@ class ControllerPost extends Controller
 
     public function updatePost(Request $request)
     {
-        $flag = $this->validateCookie($request);
+        $flag = $this->validateCookiePost($request);
 
         if ($flag != 0)
         {
@@ -227,7 +227,7 @@ class ControllerPost extends Controller
         }
         elseif ($post->is_published)
         {
-            $flag = $this->validateCookie($post);
+            $flag = $this->validateCookiePost($post);
 
             if ($flag != 0)
             {
@@ -268,7 +268,7 @@ class ControllerPost extends Controller
 
         if ($post_info->is_published)
         {
-            $flag = $this->validateCookie($post_info);
+            $flag = $this->validateCookiePost($post_info);
 
             if ($flag != 0)
             {
@@ -277,24 +277,5 @@ class ControllerPost extends Controller
         }
 
         return view("/posts/view_post", compact("post_info", "flag"));
-    }
-
-    private function validateCookie($post)
-    {
-        $user_cookie = UserCookie::where("post_id", $post->id)->first();
-        $cookie_name = $user_cookie->cookie_name;
-        $cookie_value = $user_cookie->cookie_value;
-
-        if (Cookie::get($cookie_name) !== $cookie_value)
-        {
-            $info = "Edit / Delete post time out.";
-            $refer = [
-                "title_btn" => "Back",
-                "route" => ""
-            ];
-            return compact("info", "refer");
-        }
-
-        return 0;
     }
 }

@@ -11,6 +11,7 @@
     <script src="{{ asset("js/autoresize_textarea.js") }}"></script>
     <script src="{{ asset("js/textarea_resize.js") }}"></script>
     <script src="{{ asset("js/go_back.js") }}"></script>
+    <script src="{{ asset("js/notification.js") }}"></script>
 </head>
 <body>
 <header>

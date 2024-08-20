@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" maxLength="45" style="font-size: 18px;" placeholder="Creative title for your Topic" required>
+                <input type="text" id="title" name="topic_title" maxLength="45" style="font-size: 18px;" placeholder="Creative title for your Topic" required>
             </div>
             <button type="submit" class="submit-button">Create Topic</button>
         </form>
