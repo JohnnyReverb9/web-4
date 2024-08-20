@@ -69,4 +69,14 @@ class ControllerTopics extends Controller
 
         return response()->json($comment);
     }
+
+    public function createTopic(Request $request)
+    {
+
+    }
+
+    public function createTopicForm()
+    {
+        return view("topics/create_topic");
+    }
 }

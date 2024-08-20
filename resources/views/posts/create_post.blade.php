@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" maxLength="45" style="font-size: 18px;" placeholder="Give a brief title for your post" required>
+                <input type="text" id="title" name="title" maxLength="45" style="font-size: 18px;" placeholder="Give a brief title for your Post|Permanent" required>
             </div>
             <div class="form-group">
                 <label for="content">Content:</label>
@@ -28,7 +28,7 @@
                 <label for="is_published">Permanent:</label>
                 <input type="checkbox" id="is_published" name="is_published">
             </div>
-            <button type="submit" class="submit-button">Create post</button>
+            <button type="submit" class="submit-button">Create Post|Permanent</button>
         </form>
     </div>
 @endsection

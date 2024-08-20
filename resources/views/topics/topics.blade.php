@@ -8,7 +8,8 @@
             <div style="display: flex; justify-content: flex-end;">
                 <input type="text" id="search_input" name="search_input" class="search-input" maxLength="45" style="font-size: 18px; margin-right: 10px" placeholder="Topic Title">
                 <a id="search_button" class="create-post-button" style="cursor: pointer; margin-right: 10px">Search</a>
-                <a href="{{ url('/permanent') }}" class="create-post-button">To Permanents</a>
+                <a href="{{ url('/permanent') }}" class="create-post-button" style="cursor: pointer; margin-right: 10px">To Permanents</a>
+                <a href="{{ url('/topics/create') }}" class="create-post-button" >Create Topic</a>
             </div>
         </div>
         @if (session("success"))
