@@ -5,10 +5,17 @@
         <div class="header-actions" style="display: flex; justify-content: space-between;">
             <h1 style="font-size: 35px;">{{ $topic->topic_title }}</h1>
             <div style="display: flex;">
+                @if ($topic->post_id != 0)
                 <a href="{{ url("/posts/view/" . $topic->post_id) }}" class="create-post-button" style="cursor: pointer; margin-right: 10px;">View Permanent</a>
+                @endif
                 <a href="/topics" class="create-post-button" style="cursor: pointer;">Back</a>
             </div>
         </div>
+        @if (session("success"))
+            <div id="alert">
+                <span>{{ session("success") }}</span>
+            </div>
+        @endif
         <div class="post-header" style="margin-top: -40px">
             <h3>Total comments: <span id="comment-counter">{{ $topic->comments }}</span></h3>
         </div>

@@ -31,7 +31,7 @@ Route::get("/posts/view/{id}", [ControllerPost::class, "viewPost"]);
 Route::get("/permanent", [ControllerArchive::class, "index"]);
 
 Route::get("/topics", [ControllerTopics::class, "index"]);
-Route::get("/topics/view/{post_id}", [ControllerTopics::class, "viewTopic"]);
+Route::get("/topics/view/{id}", [ControllerTopics::class, "viewTopic"]);
 Route::get("/topics/create", [ControllerTopics::class, "createTopicForm"]);
 
 Route::get("/settings", [ControllerSettings::class, "index"]);

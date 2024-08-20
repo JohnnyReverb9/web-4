@@ -36,7 +36,7 @@ class ControllerTopics extends Controller
 
     public function viewTopic(Request $request)
     {
-        $topic = Topics::where("post_id", $request->post_id)->first();
+        $topic = Topics::where("id", $request->id)->first();
 
         if (is_null($topic))
         {
@@ -81,7 +81,7 @@ class ControllerTopics extends Controller
             "topic_title" => $validatedData["topic_title"]
         ]);
 
-        return redirect("/topics")->with("success", "Topic created successfully.");
+        return redirect("/topics/view/" . $topic->id)->with("success", "Topic created successfully.");
     }
 
     public function createTopicForm()
