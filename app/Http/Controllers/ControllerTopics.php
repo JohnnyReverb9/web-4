@@ -23,15 +23,16 @@ class ControllerTopics extends Controller
         }
 
         $last_comments = ManagementTopic::getLastComments();
+        $last_comments_times = ManagementTopic::getLastCommentsTimes();
 
         if ($request->ajax())
         {
             return response()->json([
-                "html" => view("topics/search/topics_index", compact("topics", "last_comments"))->render()
+                "html" => view("topics/search/topics_index", compact("topics", "last_comments", "last_comments_times"))->render()
             ]);
         }
 
-        return view("/topics/topics", compact("topics", "last_comments"));
+        return view("/topics/topics", compact("topics", "last_comments", "last_comments_times"));
     }
 
     public function viewTopic(Request $request)

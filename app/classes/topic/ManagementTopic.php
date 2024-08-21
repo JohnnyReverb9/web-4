@@ -60,4 +60,18 @@ class ManagementTopic extends ManagementBase
             })
             ->toArray();
     }
+
+    public static function getLastCommentsTimes(): array
+    {
+        self::findSortedCommentsByDate();
+
+        $ret = [];
+
+        foreach (self::$comments as $comment)
+        {
+            $ret[$comment["topic_id"]] = $comment["added"];
+        }
+
+        return $ret;
+    }
 }
