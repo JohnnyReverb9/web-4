@@ -5,7 +5,7 @@
         <div class="header-actions">
             <h1 style="font-size: 34px; margin: 0">Posts</h1>
             <div style="display: flex; justify-content: flex-end;">
-                <input type="text" id="search_input" name="search_input" class="search-input" maxLength="45" style="font-size: 18px; margin-right: 10px" placeholder="Post Title">
+                <input type="text" id="search_input" name="search_input" class="search-input" maxLength="45" style="font-size: 18px; margin-right: 10px; outline: none;" placeholder="Post Title">
                 <a id="search_button" class="create-post-button" style="cursor: pointer; margin-right: 10px">Search</a>
                 <a href="{{ url('/posts/create') }}" class="create-post-button">Create post</a>
             </div>
