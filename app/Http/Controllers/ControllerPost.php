@@ -15,29 +15,20 @@ class ControllerPost extends Controller
 {
     public function index(Request $request)
     {
-        // $post = Post::find(1);
-        // $posts = Post::all();
-        // $post = Post::where("is_published", 1)->first(); // object
-
         $search = $request->input('search');
+        $query = Post::where("is_published", 1);
 
-        if ($search)
-        {
-            $posts = Post::where('title', 'LIKE', "%$search%")
-                ->where("is_published", 1)
-                ->get();
-        }
-        else
-        {
-            $posts = Post::where("is_published", 1)->get(); // collection
+        if ($search) {
+            $query->where('title', 'LIKE', "%$search%");
         }
 
+        $posts = $query->paginate(10);
         $available_edit = ManagementPost::getPostsAbleToEditDelete();
 
-        if ($request->ajax())
-        {
+        if ($request->ajax()) {
             return response()->json([
-                "html" => view("posts/search/index_content", compact("posts", "available_edit"))->render()
+                "html" => view("posts/search/index_content", compact("posts", "available_edit"))->render(),
+                "next_page" => $posts->nextPageUrl()
             ]);
         }
 
