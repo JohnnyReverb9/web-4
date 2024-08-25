@@ -12,27 +12,25 @@ class ControllerTopics extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $query = Topics::query();
 
-        if ($search)
-        {
-            $topics = Topics::where('topic_title', 'LIKE', "%$search%")->get();
+        if ($search) {
+            $query->where('topic_title', 'LIKE', "%$search%");
         }
-        else
-        {
-            $topics = Topics::all();
-        }
+
+        $topics = $query->paginate(10);
 
         $last_comments = ManagementTopic::getLastComments();
         $last_comments_times = ManagementTopic::getLastCommentsTimes();
 
-        if ($request->ajax())
-        {
+        if ($request->ajax()) {
             return response()->json([
-                "html" => view("topics/search/topics_index", compact("topics", "last_comments", "last_comments_times"))->render()
+                "html" => view("topics/search/topics_index", compact("topics", "last_comments", "last_comments_times"))->render(),
+                "next_page" => $topics->nextPageUrl()
             ]);
         }
 
-        return view("/topics/topics", compact("topics", "last_comments", "last_comments_times"));
+        return view("topics/topics", compact("topics", "last_comments", "last_comments_times"));
     }
 
     public function viewTopic(Request $request)
