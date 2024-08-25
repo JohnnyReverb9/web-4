@@ -10,22 +10,18 @@ class ControllerArchive extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $query = Post::where("is_published", 0);
 
-        if ($search)
-        {
-            $archived_posts = Post::where('title', 'LIKE', "%$search%")
-                ->where("is_published", 0)
-                ->get();
-        }
-        else
-        {
-            $archived_posts = Post::where("is_published", 0)->get();
+        if ($search) {
+            $query->where('title', 'LIKE', "%$search%");
         }
 
-        if ($request->ajax())
-        {
+        $archived_posts = $query->paginate(10);
+
+        if ($request->ajax()) {
             return response()->json([
-                "html" => view("permanent/search/index_content", compact("archived_posts"))->render()
+                "html" => view("permanent/search/index_content", compact("archived_posts"))->render(),
+                "next_page" => $archived_posts->nextPageUrl()
             ]);
         }
 
