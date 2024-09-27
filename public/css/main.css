@@ -107,6 +107,7 @@ header a {
     /*align-items: center;*/
     margin-top: 20px;
     font-size: 21px;
+    word-break: break-word;
 }
 
 .post-content p {
