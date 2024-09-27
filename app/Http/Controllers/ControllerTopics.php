@@ -52,6 +52,25 @@ class ControllerTopics extends Controller
         return view("/topics/view_topic", compact("topic", "comments"));
     }
 
+    public function viewTopicFromPermanent(Request $request)
+    {
+        $topic = Topics::where("post_id", $request->id)->first();
+
+        if (is_null($topic))
+        {
+            $info = "Topic not found.";
+            $refer = [
+                "title_btn" => "Back",
+                "route" => ""
+            ];
+            return view("/error/error_page", compact("info", "refer"));
+        }
+
+        $comments = Comments::where("topic_id", $topic->id)->get();
+
+        return view("/topics/view_topic", compact("topic", "comments"));
+    }
+
     public function addComment(Request $request)
     {
         $validatedData = $request->validate([

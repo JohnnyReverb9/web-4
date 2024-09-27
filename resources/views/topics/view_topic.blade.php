@@ -8,7 +8,7 @@
                 @if ($topic->post_id != 0)
                 <a href="{{ url("/posts/view/" . $topic->post_id) }}" class="create-post-button" style="cursor: pointer; margin-right: 10px;">View Permanent</a>
                 @endif
-                <a href="/topics" class="create-post-button" style="cursor: pointer;">Back</a>
+                <a onclick="goBack()" class="create-post-button" style="cursor: pointer;">Back</a>
             </div>
         </div>
         @if (session("success"))
